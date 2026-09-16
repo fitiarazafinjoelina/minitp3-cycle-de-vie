@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Mini-TP 3 — Prédictions et observations</title>
+  <style>
+    @page { size: A4 landscape; margin: 13mm; }
+    body { font-family: sans-serif; color: #202124; font-size: 10pt; }
+    h1 { text-align: center; font-size: 18pt; margin: 0 0 3mm; }
+    h2 { font-size: 13pt; margin: 5mm 0 2mm; }
+    .identity { text-align: center; margin-bottom: 4mm; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #555; padding: 6px; vertical-align: top; }
+    th { background: #dbeafe; text-align: left; }
+    code { font-family: monospace; }
+    .answer { border-left: 4px solid #2563eb; padding-left: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Mini-TP 3 — Anatomie Android</h1>
+  <div class="identity"><strong>ETU002630 — Razafinjoelina Fitia Elie Evah</strong></div>
+  <h2>Étape 1 — Prédictions avant lancement</h2>
+  <table>
+    <tr><th>Scénario</th><th>Séquence exacte prédite</th><th>Réponse à la question « + »</th></tr>
+    <tr><td>A — Rotation</td><td><code>onPause → onStop → onDestroy → onCreate → onStart → onResume</code></td><td>L’Activity est recréée ; un compteur stocké seulement dans celle-ci revient à sa valeur initiale.</td></tr>
+    <tr><td>B — Accueil, puis retour</td><td><code>onPause → onStop → onRestart → onStart → onResume</code></td><td>La même instance revient au premier plan et conserve son compteur.</td></tr>
+  </table>
+  <h2>Étape 2 — Observations au Logcat</h2>
+  <table>
+    <tr><th>Scénario</th><th>Séquence observée</th><th>Écart avec la prédiction et explication</th></tr>
+    <tr><td>Rotation</td><td><code>onPause → onStop → onDestroy → onCreate → onStart → onResume</code></td><td>Aucun. L’instance 63123861 est détruite et remplacée par l’instance 240961446.</td></tr>
+    <tr><td>Accueil, puis retour</td><td><code>onPause → onStop → onRestart → onStart → onResume</code></td><td>Aucun. Il n’y a ni <code>onDestroy</code> ni <code>onCreate</code> : la même instance reprend.</td></tr>
+  </table>
+  <h2>Question d’observation</h2>
+  <p class="answer">Le changement de numéro prouve que l’ancienne Activity est détruite et qu’une nouvelle est créée ; un compteur conservé uniquement dans l’Activity est donc réinitialisé.</p>
+  <h2>Bonus — Second écran</h2>
+  <p class="answer"><code>MainActivity.onPause → SecondActivity.onCreate → onStart → onResume → MainActivity.onStop</code>. L’écran principal se met en pause avant la création du second.</p>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="600" viewBox="0 0 1500 600">
+  <rect width="1500" height="600" fill="#15171a"/>
+  <rect x="0" y="0" width="1500" height="74" fill="#262a30"/>
+  <text x="35" y="47" fill="#ffffff" font-family="sans-serif" font-size="28" font-weight="bold">Logcat — tag:CYCLE — Scénario B : accueil puis retour</text>
+  <g fill="#d7dae0" font-family="monospace" font-size="23">
+    <text x="35" y="125">15:00:57.104  I/CYCLE: onPause — perd le premier plan</text>
+    <text x="35" y="172">15:00:57.807  I/CYCLE: onStop — plus visible</text>
+    <text x="35" y="247">15:00:59.128  I/CYCLE: onRestart — l'écran stoppé va redevenir visible</text>
+    <text x="35" y="294">15:00:59.128  I/CYCLE: onStart — l'écran devient visible</text>
+    <text x="35" y="341">15:00:59.129  I/CYCLE: onResume — premier plan, interactif</text>
+  </g>
+  <rect x="22" y="216" width="1270" height="55" rx="8" fill="none" stroke="#51cf66" stroke-width="4"/>
+  <text x="35" y="430" fill="#69db7c" font-family="sans-serif" font-size="24" font-weight="bold">Retour par onRestart : la même Activity reprend.</text>
+  <text x="35" y="480" fill="#ffd43b" font-family="sans-serif" font-size="23">Aucun onDestroy ni onCreate : contrairement à la rotation, l’instance est conservée.</text>
+  <text x="35" y="560" fill="#868e96" font-family="sans-serif" font-size="18">ETU002630 — Razafinjoelina Fitia Elie Evah</text>
+</svg>
